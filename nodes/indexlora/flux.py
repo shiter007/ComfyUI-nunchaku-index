@@ -40,7 +40,8 @@ class NunchakuFluxLoraLoaderIndex:
             }
         }
 
-    RETURN_TYPES = ("MODEL",)
+    RETURN_TYPES = ("MODEL", "STRING",)
+    RETURN_NAMES = ("MODEL", "lora_name",)
     OUTPUT_TOOLTIPS = ("The modified diffusion model.",)
     FUNCTION = "load_index_lora"
     TITLE = "Nunchaku FLUX.1 LoRA Index Loader"
@@ -82,4 +83,4 @@ class NunchakuFluxLoraLoaderIndex:
             if old_in_channels < new_in_channels:
                 ret_model.model.model_config.unet_config["in_channels"] = new_in_channels
 
-        return (ret_model,)
+        return (ret_model, lora_name,)
